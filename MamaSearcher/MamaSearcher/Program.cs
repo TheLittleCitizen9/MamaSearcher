@@ -6,7 +6,11 @@ namespace MamaSearcher
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Searcher searcher = new Searcher();
+            SearchActions searchActions = new SearchActions();
+            searcher.Subscribe("abc", searchActions.PrintPattern);
+            searcher.Subscribe("def", searchActions.PrintPattern);
+            searcher.PerformSearch("abcdefg");
         }
     }
 }
