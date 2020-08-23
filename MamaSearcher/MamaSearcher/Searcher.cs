@@ -22,7 +22,8 @@ namespace MamaSearcher
 
         public void Subscribe(string pattern, Action<int, string> actionToPerform)
         {
-            throw new NotImplementedException();
+            Patterns.Add(pattern);
+            PatternsToAction[pattern] = actionToPerform;
         }
     }
 }
