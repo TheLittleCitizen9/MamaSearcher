@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MamaSearcher
@@ -7,12 +8,10 @@ namespace MamaSearcher
     public class Searcher : IMamaSearcher
     {
         public Dictionary<string, Action<int, string>> PatternsToAction { get; set; }
-        public List<string> Patterns { get; set; }
 
         public Searcher()
         {
             PatternsToAction = new Dictionary<string, Action<int, string>>();
-            Patterns = new List<string>();
         }
         public void PerformSearch(string content)
         {
@@ -20,7 +19,7 @@ namespace MamaSearcher
             {
                 if(content.Contains(pair.Key))
                 {
-                    int index = Patterns.IndexOf(pair.Key);
+                    int index = PatternsToAction.Keys.ToList().IndexOf(pair.Key);
                     pair.Value.Invoke(index, pair.Key);
                 }
             }
@@ -28,7 +27,6 @@ namespace MamaSearcher
 
         public void Subscribe(string pattern, Action<int, string> actionToPerform)
         {
-            Patterns.Add(pattern);
             if(PatternsToAction.ContainsKey(pattern))
             {
                 PatternsToAction[pattern] += actionToPerform;
