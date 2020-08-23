@@ -29,7 +29,15 @@ namespace MamaSearcher
         public void Subscribe(string pattern, Action<int, string> actionToPerform)
         {
             Patterns.Add(pattern);
-            PatternsToAction[pattern] = actionToPerform;
+            if(PatternsToAction.ContainsKey(pattern))
+            {
+                PatternsToAction[pattern] += actionToPerform;
+            }
+            else
+            {
+                PatternsToAction[pattern] = actionToPerform;
+            }
+            
         }
     }
 }

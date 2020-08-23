@@ -9,6 +9,7 @@ namespace MamaSearcher
             Searcher searcher = new Searcher();
             SearchActions searchActions = new SearchActions();
             searcher.Subscribe("abc", searchActions.PrintPattern);
+            searcher.Subscribe("abc", searchActions.PrintPattern2);
             searcher.Subscribe("def", searchActions.PrintPattern);
             searcher.PerformSearch("abcdefg");
         }

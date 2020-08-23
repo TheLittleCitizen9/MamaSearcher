@@ -11,5 +11,10 @@ namespace MamaSearcher
         {
             Console.WriteLine($"The pattern is: {pattern}, in index: {index}");
         }
+
+        public void PrintPattern2(int index, string pattern)
+        {
+            Console.WriteLine($"Hello");
+        }
     }
 }
